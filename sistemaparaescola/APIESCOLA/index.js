@@ -1,6 +1,8 @@
 const express = require('express')
 const connection = require('./database/ConnectionDB')
-const Alunos = require('./alunos/Alunos')
+
+const Router = require('./router')
+
 
 const app = express()
 
@@ -12,10 +14,13 @@ connection
         console.log(error)
     })
 
+app.use(express.json());
+app.use('/', Router)
+
 
 app.get('/', (req, res) => {
     res.send('Estamos acessando a rota home')
 })
 
-app.listen(8000, console.log('Sistema rodando na porta 8000'))
+app.listen(9000, console.log('Sistema rodando na porta 8000'))
 

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 const connection = require('../database/ConnectionDB')
-const Series = require('../series/Series')
+const Series = require('./Serie')
 
 const Alunos = connection.define('alunos', {
     name:{
@@ -20,4 +20,5 @@ const Alunos = connection.define('alunos', {
 Series.hasMany(Alunos)
 Alunos.belongsTo(Series)
 
+Alunos.sync({force: false})
 module.exports = Alunos

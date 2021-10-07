@@ -12,4 +12,5 @@ const Series = connection.define('series', {
 })
 
 
+Series.sync({force: false})
 module.exports = Series
