@@ -3,9 +3,9 @@ const Series = require('../models/Serie')
 const newSeries = async (req, res) => {
         try{
             var teacher = req.body.teacher
-            var scholGrade = req.body.scholGrade
+            var school_Grade = req.body.school_Grade
             const series = await Series.create({teacher:teacher,
-            scholGrade: scholGrade})
+            school_Grade: school_Grade})
             res.status(201).send({series})
 
         }catch(error){
@@ -26,9 +26,19 @@ const allSeries = async (req, res) => {
 
 const updateSeries = async (req, res) => {
     try {
-    const upSeries = await Series.findByPk(1);
-    upSeries.nome = "Mouse Top";
- 
+        var id = req.params.id
+        
+        var upTeacher = req.body.teacher
+        var upSchoolGrade = req.body.school_Grade
+
+        const upSeries = await Series.findByPk(id);
+        upSeries.teacher = upTeacher
+        upSeries.school_Grade = upSchoolGrade
+
+        const edit = await upSeries.save()
+        
+        res.status(200).send(edit)
+        
     } catch (error) {
         res.status(400).send(error)
 
@@ -37,7 +47,7 @@ const updateSeries = async (req, res) => {
 
 
 
-module.exports = {newSeries, allSeries}
+module.exports = {newSeries, allSeries, updateSeries}
 
 // router.get('/series', (req, res) => {
 //     Series.findAll().then(series => {

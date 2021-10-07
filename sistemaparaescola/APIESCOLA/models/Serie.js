@@ -5,7 +5,7 @@ const Series = connection.define('series', {
     teacher: {
         type: Sequelize.STRING,
         allowNull: false
-    },schoolGrade: {
+    },school_Grade: {
         type: Sequelize.STRING,
         allowNull: false
     }

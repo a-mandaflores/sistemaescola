@@ -7,5 +7,7 @@ const seriesControllers = require('./controllers/seriesControllers')
 
 router.post('/serie', seriesControllers.newSeries)
 router.get('/series', seriesControllers.allSeries)
+router.put('/serie/:id', seriesControllers.updateSeries)
+
 
 module.exports = router 
